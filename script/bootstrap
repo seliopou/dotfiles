@@ -117,9 +117,9 @@ install_dotfiles () {
 setup_gitconfig
 install_dotfiles
 
-if [ "$(uname -s)" == "Darwin" ]
-then
-fi
+#if [ "$(uname -s)" == "Darwin" ]
+#then
+#fi
 
 echo ''
 echo '  All installed!'
