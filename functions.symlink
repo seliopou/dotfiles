@@ -1,0 +1,27 @@
+# filesystem nagivation from pipegeek
+cd() {
+    if [ ! "$1" ]; then
+        cd ~
+    else
+        pushd "$@" 2>&1>/dev/null
+    fi
+}
+
+back() {
+    if [ ! "$1" ]; then
+        back 1
+    elif (( $1 > 0 )); then
+        popd 2>&1>/dev/null
+        back $(($1 - 1))
+    fi
+}
+
+up() {
+    if [ ! "$1" ]; then
+        up 1
+    elif (( $1 > 0 )); then
+        up $(($1 - 1)) "../$2"
+    else
+        cd "./$2"
+    fi
+}

@@ -1,0 +1,23 @@
+# Detect which `ls` flavor is in use
+if ls --color > /dev/null 2>&1; then # GNU `ls`
+    colorflag="--color"
+else # OS X `ls`
+    colorflag="-G"
+fi
+
+alias ls="ls -alF ${colorflag}"
+
+alias hide="/Developer/Tools/SetFile -a v"
+alias unhide="/Developer/Tools/SetFile -a V"
+
+# URL-encode/unencode strings
+alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'
+alias urlunencode='python -c "import sys, urllib as ul; print ul.unquote_plus(sys.argv[1]);"'
+
+# One of @janmoesen’s ProTip™s
+for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
+    alias "$method"="lwp-request -m '$method'"
+done
+
+alias stfu="osascript -e 'set volume output muted true'"
+alias pumpitup="osascript -e 'set volume 7'"
