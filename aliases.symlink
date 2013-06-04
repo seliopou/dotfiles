@@ -10,6 +10,8 @@ alias ls="ls -alF ${colorflag}"
 alias hide="/Developer/Tools/SetFile -a v"
 alias unhide="/Developer/Tools/SetFile -a V"
 
+alias pbnofmt="pbpaste | pbcopy"
+
 # URL-encode/unencode strings
 alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'
 alias urlunencode='python -c "import sys, urllib as ul; print ul.unquote_plus(sys.argv[1]);"'
