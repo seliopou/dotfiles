@@ -9,6 +9,8 @@ for file in ~/.{path,bash_prompt,exports,aliases,functions,extra}; do
 done
 unset file
 
+[ -f /etc/bash_completion ] && source /etc/bash_completion
+
 share=/usr/share/git-core
 [ -f $share/git-completion.bash ] && source $share/git-completion.bash
 [ -f $share/git-prompt.sh       ] && source $share/git-prompt.sh
