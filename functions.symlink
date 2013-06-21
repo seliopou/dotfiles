@@ -25,3 +25,13 @@ up() {
         cd "./$2"
     fi
 }
+
+# virtual environments
+
+venv() {
+    if [ ! "$1" ]; then
+        venv venv
+    else
+        source ~/code/envs/$1/bin/activate
+    fi
+}
