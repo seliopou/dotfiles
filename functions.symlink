@@ -35,3 +35,9 @@ venv() {
         source ~/code/envs/$1/bin/activate
     fi
 }
+
+# documentation
+
+doc() {
+    open ~/code/docs/$1/index.html
+}
