@@ -1,0 +1,34 @@
+(load-file "~/.lib/ProofGeneral/generic/proof-site.el")
+
+(add-to-list 'auto-mode-alist '("\\.v$" . coq-mode))
+(autoload 'coq-mode "coq" "Major mode for editing Coq vernacular." t)
+(require 'proof-site)
+
+(custom-set-variables
+ '(coq-compile-before-require t)
+; '(coq-load-path (quote ((rec "." ""))))
+ '(coq-one-command-per-line nil)
+ '(coq-prog-name "/Applications/CoqIdE_8.4pl2.app/Contents/Resources/bin/coqtop")
+ '(coq-compiler "/Applications/CoqIdE_8.4pl2.app/Contents/Resources/bin/coqc")
+ '(coq-dependency-analyzer "/Applications/CoqIdE_8.4pl2.app/Contents/Resources/bin/coqdep")
+
+ '(coq-prog-args (quote ("-emacs")))
+; '(coq-tags "/course/cs195x/lib/coq/theories/TAGS")
+ '(proof-assistants (quote (isa isar lego coq phox ccc acl2 twelf plastic lclam pgshell)))
+ '(proof-delete-empty-windows t)
+ '(proof-disappearing-proofs nil)
+ '(proof-electric-terminator-enable nil)
+ '(proof-imenu-enable t)
+ '(proof-minibuffer-messages t)
+ '(proof-script-fly-past-comments t)
+ '(proof-script-next-entity-regexps (quote ("\\(\\(\\<Add\\s-+Morphism\\>\\|\\<Chapter\\>\\|\\<Declare\\s-+Module\\>\\|\\<Module\\>\\|\\<Module\\s-+Type\\>\\|\\<Section\\>\\|\\<Correctness\\>\\|\\<Definition\\>\\|\\<Fact\\>\\|\\<Goal\\>\\|\\<Lemma\\>\\|\\<Local\\>\\|\\<Remark\\>\\|\\<Theorem\\>\\)\\s-+\\(\\(\\w\\(\\w\\|\\s_\\)*\\)\\)\\s-*[:]?\\)\\|\\(\\(\\<Defined\\>\\|\\<Save\\>\\|\\<Qed\\>\\|\\<End\\>\\|\\<Admitted\\>\\)\\s-+\\(\\(\\w\\(\\w\\|\\s_\\)*\\)\\)\\s-*.\\)" ("\\(\\<Add\\s-+Morphism\\>\\|\\<Chapter\\>\\|\\<Declare\\s-+Module\\>\\|\\<Module\\>\\|\\<Module\\s-+Type\\>\\|\\<Section\\>\\|\\<Correctness\\>\\|\\<Definition\\>\\|\\<Fact\\>\\|\\<Goal\\>\\|\\<Lemma\\>\\|\\<Local\\>\\|\\<Remark\\>\\|\\<Theorem\\>\\)\\s-+\\(\\(\\w\\(\\w\\|\\s_\\)*\\)\\)\\s-*[:]?" 2 forward "\\`\\(\\<Defined\\>\\|\\<Save\\>\\|\\<Qed\\>\\|\\<End\\>\\|\\<Admitted\\>\\|\\<Proof\\>\\)") ("\\(\\<Defined\\>\\|\\<Save\\>\\|\\<Qed\\>\\|\\<End\\>\\|\\<Admitted\\>\\)\\s-+\\(\\(\\w\\(\\w\\|\\s_\\)*\\)\\)\\s-*." 2))))
+; '(proof-shrink-windows-tofit t)
+ '(proof-splash-enable nil)
+ '(proof-sticky-errors nil)
+ '(proof-three-window-enable nil)
+; '(split-width-threshold 1)
+)
+
+(defadvice proof-shell-start (after ignore-coq-process activate)
+  "Set process-query-on-exit-flag for coq process"
+  (set-process-query-on-exit-flag (get-buffer-process proof-shell-buffer) nil))
