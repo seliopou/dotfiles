@@ -16,3 +16,4 @@ do
     [ -f $share/git-completion.bash ] && source $share/git-completion.bash
     [ -f $share/git-prompt.sh       ] && source $share/git-prompt.sh
 done
+unset file
