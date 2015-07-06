@@ -5,16 +5,20 @@ set showmatch
 set hlsearch
 set incsearch
 
+set showmatch
+
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set expandtab
 set scrolloff=3
 
+set autoindent
+set smartindent
+
 set backspace=indent,eol,start
 set pastetoggle=<F12>
 
-set autoindent
 set ruler
 set wildmenu
 set cmdheight=2
@@ -36,6 +40,22 @@ nmap <silent> <leader>s :set nolist!<CR>
 
 map t xp
 
+" Returns true if paste mode is enabled
+function! HasPaste()
+    if &paste
+        return 'PASTE MODE  '
+    endif
+    return ''
+endfunction
+
+""""""""""""""""""""""""""""""
+" => Status line
+""""""""""""""""""""""""""""""
+" Always show the status line
+set laststatus=2
+
+" Format the status line
+set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
 
 "" Setup grepprg for git repositories
 ""
