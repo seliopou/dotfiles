@@ -23,3 +23,5 @@ done
 
 alias stfu="osascript -e 'set volume output muted true'"
 alias pumpitup="osascript -e 'set volume 7'"
+
+alias speedtest='curl "http://speedtest.wdc01.softlayer.com/downloads/test100.zip" > /dev/null'
