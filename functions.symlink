@@ -41,3 +41,7 @@ venv() {
 doc() {
     open ~/code/docs/$1/index.html
 }
+
+manpdf() {
+  man -t "$1" | ps2pdf - "$1.pdf"
+}
