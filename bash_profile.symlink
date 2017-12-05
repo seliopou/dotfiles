@@ -11,9 +11,14 @@ unset file
 
 [ -f /etc/bash_completion ] && source /etc/bash_completion
 
-for share in /usr/share/git-core /usr/local/share/git-core/contrib/completion
+GIT_SHARE=" \
+    /usr/share/git-core \
+    /usr/local/share/git-core/contrib/completion \
+    /Applications/Xcode.app/Contents/Developer/usr/share/git-core"
+
+for share in $GIT_SHARE
 do
     [ -f $share/git-completion.bash ] && source $share/git-completion.bash
     [ -f $share/git-prompt.sh       ] && source $share/git-prompt.sh
 done
-unset file
+unset share
