@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# Taken from StackOverflow:
+#
+#  https://apple.stackexchange.com/questions/124476/unable-to-modify-the-volume-with-the-keyboard
+#
+sudo killall coreaudiod
+
+sudo kextunload /System/Library/Extensions/AppleHDA.kext 
+sudo kextload /System/Library/Extensions/AppleHDA.kext
