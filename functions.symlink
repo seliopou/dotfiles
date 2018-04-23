@@ -45,3 +45,9 @@ doc() {
 manpdf() {
   man -t "$1" | ps2pdf - "$1.pdf"
 }
+
+# kill trailing whitespace in git repos
+
+kws () {
+  git status --porcelain | grep "^ *M" | sed -e 's/^ *MM\? *//g' | xargs sed -i -e 's/ +$//g'
+}
