@@ -22,3 +22,5 @@ do
     [ -f $share/git-prompt.sh       ] && source $share/git-prompt.sh
 done
 unset share
+
+export PATH="$HOME/.cargo/bin:$PATH"

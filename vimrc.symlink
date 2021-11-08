@@ -67,3 +67,10 @@ call system("git rev-parse --is-inside-work-tree")
 if (!v:shell_error)
     set grepprg=git\ grep\ -n
 endif
+
+"" For Merlin
+let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
+execute "set rtp+=" . g:opamshare . "/merlin/vim"
+
+"" For ocp-indent
+execute "set rtp^=" . g:opamshare . "/share/ocp-indent/vim"
