@@ -30,7 +30,7 @@ up() {
 
 venv() {
     if [ ! "$1" ]; then
-        venv venv
+        venv default
     else
         source ~/code/envs/$1/bin/activate
     fi
