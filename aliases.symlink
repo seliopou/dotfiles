@@ -27,3 +27,4 @@ alias pumpitup="osascript -e 'set volume 7'"
 alias speedtest='curl "http://speedtest.wdc01.softlayer.com/downloads/test100.zip" > /dev/null'
 
 alias fixmdns="sudo killall -HUP mDNSResponder"
+aliax fixairplay="sudo killall AirPlayXPCHelper"
